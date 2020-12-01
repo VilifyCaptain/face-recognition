@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="registerpagestyle.css">
+    <title>HTML FORM</title>
+</head>
+
+<body>
+    <div class="outerdiv">
+        <div class="text">REGISTRATION!!!</div>
+        <div class="container">
+            <form action="http://localhost:3000/registration" method="POST">
+                <div class="element">
+                    <label for="name">NAME</label>
+                    <input type="text" name="name" id="name" autocomplete="on">
+                </div>
+                <!-- <div class="element">
+                    <label for="RollNo">ROLL NUMBER</label>
+                    <input type="tel" name="RollNo" id="RollNo">
+                </div> -->
+                <!-- <div class="element">
+                    <label for="contact">MOBILE</label>
+                    <input type="tel" name="contact" id="contact">
+                </div> -->
+                <!-- <div class="element">
+                    <label for="branch">BRANCH</label>
+                    <select name="branch" id="branch">
+                        <option value="CSE">CSE</option>
+                        <option value="ME">ME</option>
+                        <option value="ECE">ECE</option>
+                        <option value="CIVIL">CIVIL</option>
+                    </select>
+                </div> -->
+                <!-- <div class="element">
+                    YEAR <br>
+                    <input type="radio" name="Year" id="First">
+                    <label for="First">1st Year</label><br>
+                    <input type="radio" name="Year" id="Second">
+                    <label for="Second">2nd Year</label><br>
+                    <input type="radio" name="Year" id="Third">
+                    <label for="Third">3rd Year</label><br>
+                    <input type="radio" name="Year" id="Fourth">
+                    <label for="Fourth">4th Year</label>
+                </div> -->
+               
+                <div class="element">
+                    <label for="email">Email</label>
+                    <input type="email" name="email" id="email">
+                </div>
+                <div class="element">
+                    <label for="password">Password</label>
+                    <input type="password" name="password" id="password">
+                </div>
+                <div class="element">
+                    <label for="DOB">Date of Birth</label>
+                    <input type="date" name="DOB" id="DOB">
+                </div>
+                <div class="element">
+                    <input type="submit" name="submit" id="submit">
+                    <input type="reset" name="reset" id="reset"><br>
+                </div>
+               
+            </form>
+    
+        </div>
+    </div>
+  
+
+</body>
+
+</html>

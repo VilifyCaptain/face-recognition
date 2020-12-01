@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="homepagestyle.css">
+
+</head>
+<body>
+    <div class="page">
+        <div class="text">WELCOME!!!</div>
+        <div class="container">
+            <button class="register" onclick="onRegister()">Register</button>
+            <button class="signin" onclick="onSignIn()">Signin</button>
+        </div>
+    </div>
+    
+   
+
+    <script>
+        const onRegister=()=>{
+           location.href = "http://localhost:3000/register";
+        }
+
+        const onSignIn=()=>{
+           location.href = "http://localhost:3000/signin";
+        }
+    </script>
+
+</body>
+</html>

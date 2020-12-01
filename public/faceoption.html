@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+    <link rel="stylesheet" href="faceoptionpagestyle.css">
+
+</head>
+<body>
+    <div class="page">
+     
+        <div class="text">Choose Option</div>
+
+        <div class="container">
+            <button class="liveface" onclick="onLiveFaceClick()">LiveFace</button>
+            <button class="photoface" onclick="onPhotoFaceClick()">PhotoFace</button>
+        </div>
+
+    </div>
+   
+    <script>
+        const onLiveFaceClick=()=>{
+            location.href="http://localhost:3000/liveface";
+        }
+
+        const onPhotoFaceClick=()=>{
+            location.href="http://localhost:3000/photoface";
+        }
+
+    </script>
+
+</body>
+</html>
