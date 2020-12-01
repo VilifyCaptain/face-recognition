@@ -10,6 +10,8 @@ async function start() {
   const container = document.createElement('div')
   container.style.position = 'relative'
   document.body.append(container)
+  const labeledFaceDescriptors = await loadLabeledImages()
+  const faceMatcher = new faceapi.FaceMatcher(labeledFaceDescriptors, 0.6)
   let image
   let canvas
   document.body.append('Loaded')
@@ -24,11 +26,28 @@ async function start() {
     faceapi.matchDimensions(canvas, displaySize)
     const detections = await faceapi.detectAllFaces(image).withFaceLandmarks().withFaceDescriptors()
     const resizedDetections = faceapi.resizeResults(detections, displaySize)
-    resizedDetections.forEach(detection =>{
-    const box=detection.detection.box
-    const drawBox=new faceapi.draw.DrawBox(box, {label:'Face'})
-    drawBox.draw(canvas)
+    const results = resizedDetections.map(d => faceMatcher.findBestMatch(d.descriptor))
+    results.forEach((result, i) => {
+      const box = resizedDetections[i].detection.box
+      const drawBox = new faceapi.draw.DrawBox(box, { label: result.toString() })
+      drawBox.draw(canvas)
+    })
   })
-})
 }
 
+function loadLabeledImages() {
+  const labels = ['MsDhoni', 'RohitSharma', 'ViratKohli']
+  return Promise.all(
+    labels.map(async label => {
+      const descriptions = []
+      for (let i = 1; i <= 7; i++) {
+        const img = await faceapi.fetchImage(`https://raw.githubusercontent.com/VilifyCaptain/face-recognition/master/labeled_images/${label}/${i}.jpg`,)
+        //const img = await faceapi.fetchImage(`/labeled_images/${label}/${i}.jpg`)
+        const detections = await faceapi.detectSingleFace(img).withFaceLandmarks().withFaceDescriptor()
+        descriptions.push(detections.descriptor)
+      }
+
+      return new faceapi.LabeledFaceDescriptors(label, descriptions)
+    })
+  )
+}
